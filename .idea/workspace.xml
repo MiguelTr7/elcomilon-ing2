@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9fe80d15-0e30-40a1-b921-8edda7592058" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ProyectoComilon-main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/ElcomilonApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/controller/CuentaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/controller/PedidoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/controller/PlatoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/controller/UsuarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/CuentaDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/PedidoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/PedidoDetalleDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/PlatoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/UsuarioDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Cuenta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Pedido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/PedidoDetalle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Plato.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Proveedor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/CuentaRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/PedidoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/PlatoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/ProveedorRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/UsuarioRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/security/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/security/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/service/CuentaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/service/PedidoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/service/PlatoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/service/UsuarioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/test/java/cl/elcomilon/ElcomilonApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MiguelTr7"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MiguelTr7/elcomilon-ing2.git",
+    "accountId": "360c44c0-272f-4c76-9ec4-bdec772f5a17"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2zpfNWlihQ6umnY1diQivQVScKV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ElcomilonApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ElcomilonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="elcomilon-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cl.elcomilon.ElcomilonApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9fe80d15-0e30-40a1-b921-8edda7592058" name="Changes" comment="" />
+      <created>1752432896186</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752432896186</updated>
+      <workItem from="1752432897646" duration="390000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
