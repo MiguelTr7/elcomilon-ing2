@@ -5,50 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fe80d15-0e30-40a1-b921-8edda7592058" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ProyectoComilon-main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/ElcomilonApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/controller/CuentaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/controller/PedidoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/controller/PlatoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/controller/UsuarioController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/CuentaDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/PedidoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/PedidoDetalleDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/PlatoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/dto/UsuarioDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Cuenta.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Pedido.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/PedidoDetalle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Plato.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Proveedor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/model/Usuario.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/CuentaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/PedidoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/PlatoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/ProveedorRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/repository/UsuarioRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/security/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/security/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/service/CuentaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/service/PedidoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/service/PlatoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/java/cl/elcomilon/service/UsuarioService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/elcomilon/src/test/java/cl/elcomilon/ElcomilonApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,46 +15,46 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MiguelTr7"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MiguelTr7&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MiguelTr7/elcomilon-ing2.git",
-    "accountId": "360c44c0-272f-4c76-9ec4-bdec772f5a17"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MiguelTr7/elcomilon-ing2.git&quot;,
+    &quot;accountId&quot;: &quot;360c44c0-272f-4c76-9ec4-bdec772f5a17&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2zpfNWlihQ6umnY1diQivQVScKV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ElcomilonApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ElcomilonApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ElcomilonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="elcomilon-backend" />
@@ -123,10 +80,22 @@
       <option name="presentableId" value="Default" />
       <updated>1752432896186</updated>
       <workItem from="1752432897646" duration="390000" />
+      <workItem from="1752435423825" duration="1185000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
