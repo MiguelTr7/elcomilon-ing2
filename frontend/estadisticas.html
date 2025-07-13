@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Estadísticas - El Comilón</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/6980356c-632c-4914-a508-31ef9ce27319.png" type="image/png">
+    <!-- Puedes agregar Chart.js para la gráfica si quieres hacerla funcional -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body class="bg-gradient-to-br from-yellow-100 via-white to-yellow-200 min-h-screen text-gray-800">
+
+
+<!-- Navbar (igual que en las otras páginas) -->
+<nav class="bg-white/90 shadow-lg sticky top-0 z-20 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center gap-2">
+                <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="h-10 w-10 rounded-full border-2 border-yellow-400">
+                <a href="Index.html" class="text-2xl font-extrabold text-yellow-600 tracking-tight hover:text-yellow-800 transition drop-shadow">El Comilón</a>
+            </div>
+            <div class="hidden md:flex md:ml-8 md:space-x-6 md:items-center">
+                <a href="catalogo.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Platos</a>
+                <a href="restaurantes.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Convenios</a>
+                <a href="pedido.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Haz tu pedido</a>
+                <a href="delivery.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Entrega a domicilio</a>
+                <a href="contacto.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Contacto</a>
+                <a href="admin.html" class="text-yellow-600 font-bold border-2 border-yellow-400 rounded-xl px-4 py-1 ml-2 shadow transition">Administración</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Botón Volver al Panel (izquierda, para estadísticas) -->
+<div class="flex justify-start max-w-5xl mx-auto pt-8">
+    <a href="admin.html" class="bg-yellow-500 hover:bg-yellow-600 transition shadow-lg text-white font-bold py-2 px-5 rounded-2xl flex items-center gap-2">
+        <i class="ph ph-arrow-left"></i> Volver al Panel
+    </a>
+</div>
+
+
+<main class="max-w-5xl mx-auto p-8 mt-10 bg-white/80 rounded-3xl shadow-2xl">
+    <div class="flex flex-col items-center mb-10">
+        <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo Estadísticas" class="w-20 h-20 rounded-full border-4 border-yellow-400 shadow-lg mb-4 bg-white">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-yellow-600 drop-shadow mb-2">Estadísticas del Local</h1>
+        <p class="text-lg text-gray-700">Resumen general de ventas y actividad reciente.</p>
+    </div>
+
+
+    <!-- Cards de métricas -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-yellow-50 rounded-2xl shadow-lg p-6 flex flex-col items-center">
+            <div class="text-3xl font-extrabold text-yellow-700 mb-2">156</div>
+            <div class="text-gray-600 font-semibold">Pedidos del mes</div>
+        </div>
+        <div class="bg-yellow-50 rounded-2xl shadow-lg p-6 flex flex-col items-center">
+            <div class="text-3xl font-extrabold text-yellow-700 mb-2">$1.200.000</div>
+            <div class="text-gray-600 font-semibold">Ventas totales</div>
+        </div>
+        <div class="bg-yellow-50 rounded-2xl shadow-lg p-6 flex flex-col items-center">
+            <div class="text-3xl font-extrabold text-yellow-700 mb-2">12</div>
+            <div class="text-gray-600 font-semibold">Platos más vendidos</div>
+        </div>
+    </div>
+
+    <!-- Gráfica de ejemplo (Chart.js) -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 mb-10">
+        <h2 class="text-xl font-bold text-yellow-700 mb-4">Pedidos por día (última semana)</h2>
+        <canvas id="graficaPedidos" height="120"></canvas>
+    </div>
+
+    <!-- Tabla de pedidos recientes (solo visual) -->
+    <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h2 class="text-xl font-bold text-yellow-700 mb-4">Últimos Pedidos</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full table-auto">
+                <thead>
+                <tr class="bg-yellow-100 text-yellow-700">
+                    <th class="px-4 py-2">Fecha</th>
+                    <th class="px-4 py-2">Cliente</th>
+                    <th class="px-4 py-2">Total</th>
+                    <th class="px-4 py-2">Estado</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="border px-4 py-2">20/06/2025</td>
+                    <td class="border px-4 py-2">Juan Pérez</td>
+                    <td class="border px-4 py-2">$14.000</td>
+                    <td class="border px-4 py-2 text-green-500 font-bold">Entregado</td>
+                </tr>
+                <tr>
+                    <td class="border px-4 py-2">19/06/2025</td>
+                    <td class="border px-4 py-2">Sofía Rojas</td>
+                    <td class="border px-4 py-2">$10.500</td>
+                    <td class="border px-4 py-2 text-yellow-500 font-bold">En camino</td>
+                </tr>
+                <tr>
+                    <td class="border px-4 py-2">18/06/2025</td>
+                    <td class="border px-4 py-2">Carlos Díaz</td>
+                    <td class="border px-4 py-2">$8.000</td>
+                    <td class="border px-4 py-2 text-gray-500 font-bold">Pendiente</td>
+                </tr>
+                <!-- ...puedes agregar más -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-yellow-500 text-white p-4 text-center mt-10 rounded-t-2xl">
+    <p>&copy; 2025 El Comilón - Todos los derechos reservados</p>
+</footer>
+
+
+<!-- Script para gráfica demo -->
+<script>
+    const ctx = document.getElementById('graficaPedidos').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+            datasets: [{
+                label: 'Pedidos',
+                data: [12, 17, 9, 13, 15, 20, 16],
+                backgroundColor: 'rgba(253, 224, 71, 0.15)',
+                borderColor: '#f59e42',
+                borderWidth: 3,
+                tension: 0.5,
+                pointBackgroundColor: '#f59e42',
+                fill: true
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, grid: { color: '#f9f9f9' } },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administración - El Comilón</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/6980356c-632c-4914-a508-31ef9ce27319.png" type="image/png">
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-white to-yellow-200 min-h-screen text-gray-800">
+<!-- Navbar (puedes pegar aquí el mismo navbar de tu catálogo, agregando el link de admin como antes) -->
+
+<!-- Contenido del panel admin -->
+<main class="max-w-3xl mx-auto p-8 mt-10 bg-white/80 rounded-3xl shadow-2xl">
+    <div class="flex flex-col items-center mb-8">
+        <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo Admin" class="w-24 h-24 rounded-full border-4 border-yellow-400 shadow-lg mb-4 bg-white">
+        <h1 class="text-4xl font-extrabold text-yellow-600 drop-shadow mb-2">Panel de Administración</h1>
+        <p class="text-lg text-gray-700">Bienvenido, administrador. Desde aquí puedes gestionar el local.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Acceso a estadísticas -->
+        <a href="estadisticas.html"
+           class="flex flex-col items-center bg-yellow-50 hover:bg-yellow-100 rounded-2xl shadow-lg p-8 transition transform hover:scale-105 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mb-2 text-yellow-600 group-hover:text-yellow-800 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17a2 2 0 100-4 2 2 0 000 4zM21 21V7a2 2 0 00-2-2h-7V3.9A1.9 1.9 0 009.1 2H6.9A1.9 1.9 0 005 3.9V5H3a2 2 0 00-2 2v14h20z"/>
+            </svg>
+            <span class="text-xl font-bold text-yellow-700 group-hover:text-yellow-900 mb-1">Estadísticas</span>
+            <span class="text-sm text-gray-600">Ventas, pedidos y rendimiento</span>
+        </a>
+        <!-- Acceso a agregar plato -->
+        <a href="agregarPlato.html"
+           class="flex flex-col items-center bg-yellow-50 hover:bg-yellow-100 rounded-2xl shadow-lg p-8 transition transform hover:scale-105 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mb-2 text-yellow-600 group-hover:text-yellow-800 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            <span class="text-xl font-bold text-yellow-700 group-hover:text-yellow-900 mb-1">Agregar Plato</span>
+            <span class="text-sm text-gray-600">Crear un nuevo plato en el catálogo</span>
+        </a>
+    </div>
+</main>
+</body>
+</html>

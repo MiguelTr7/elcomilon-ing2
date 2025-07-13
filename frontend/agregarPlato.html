@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Plato - El Comilón</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        .glass {
+            background: rgba(255, 255, 255, 0.70);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(6px);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        /* Switch estilo Tailwind */
+        .switch input:checked + .slider {
+            background-color: #eab308;
+        }
+        .switch input:focus + .slider {
+            box-shadow: 0 0 1px #eab308;
+        }
+        .slider {
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 9999px;
+            transition: .4s;
+        }
+        .switch input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-yellow-50 to-orange-100 min-h-screen">
+<!-- Botones Volver: Panel a la izquierda, Catálogo a la derecha -->
+<div class="flex justify-between max-w-5xl mx-auto pt-8">
+    <!-- Izquierda -->
+    <a href="admin.html" class="bg-yellow-500 hover:bg-yellow-600 transition shadow-lg text-white font-bold py-2 px-5 rounded-2xl flex items-center gap-2">
+        <i class="ph ph-arrow-left"></i> Volver al Panel
+    </a>
+    <!-- Derecha -->
+    <a href="catalogo.html" class="bg-yellow-500 hover:bg-yellow-600 transition shadow-lg text-white font-bold py-2 px-5 rounded-2xl flex items-center gap-2">
+        <i class="ph ph-arrow-left"></i> Volver al Catálogo
+    </a>
+</div>
+
+
+<div class="flex flex-col items-center justify-center min-h-[80vh]">
+    <div class="glass w-full max-w-xl mx-auto p-10 rounded-3xl shadow-xl relative">
+        <div class="absolute -top-14 left-1/2 -translate-x-1/2 bg-yellow-400 border-4 border-white rounded-full w-24 h-24 flex items-center justify-center shadow-lg">
+            <i class="ph ph-bowl-food text-white text-5xl"></i>
+        </div>
+        <h1 class="text-4xl font-extrabold mb-10 mt-10 text-center text-yellow-600 drop-shadow">Agregar Nuevo Plato</h1>
+        <form id="formAgregarPlato" class="space-y-5">
+            <div>
+                <label class="block font-semibold text-gray-700 mb-1">Nombre del Plato</label>
+                <input type="text" id="nombre" required class="w-full border-2 border-yellow-100 bg-white/60 px-3 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow transition"/>
+            </div>
+            <div>
+                <label class="block font-semibold text-gray-700 mb-1">Descripción</label>
+                <textarea id="descripcion" required class="w-full border-2 border-yellow-100 bg-white/60 px-3 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow transition"></textarea>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-1">Precio</label>
+                    <input type="number" id="precio" step="0.01" required class="w-full border-2 border-yellow-100 bg-white/60 px-3 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow transition"/>
+                </div>
+                <div class="flex flex-col justify-end">
+                    <label class="block font-semibold text-gray-700 mb-1 mb-2">¿Está disponible?</label>
+                    <label class="switch relative inline-block w-12 h-7 select-none align-middle">
+                        <input type="checkbox" id="disponibleSwitch" class="sr-only" checked>
+                        <span class="slider block rounded-full absolute inset-0 bg-gray-300 cursor-pointer"></span>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label class="block font-semibold text-gray-700 mb-1">Disponible en unidades</label>
+                <input type="number" id="disponibleUnidades" min="1" required class="w-full border-2 border-yellow-100 bg-white/60 px-3 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow transition"/>
+            </div>
+            <div>
+                <label class="block font-semibold text-gray-700 mb-1">Imagen del Plato (URL)</label>
+                <input type="text" id="imagenUrl" placeholder="https://..." class="w-full border-2 border-yellow-100 bg-white/60 px-3 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow transition"/>
+                <div id="previewContainer" class="flex justify-center mt-2">
+                    <img id="preview" src="" alt="Previsualización" class="w-52 h-52 object-cover hidden rounded-2xl shadow-lg border-4 border-yellow-200 transition-all duration-300"/>
+                </div>
+            </div>
+            <div>
+                <label class="block font-semibold text-gray-700 mb-1">ID Proveedor <span class="text-xs text-gray-400">(opcional)</span></label>
+                <input type="number" id="idProveedor" class="w-full border-2 border-yellow-100 bg-white/60 px-3 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow transition"/>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-extrabold text-lg py-2 px-10 rounded-2xl shadow-lg transition transform hover:-translate-y-1 hover:scale-105 flex items-center gap-2 mx-auto">
+                    <i class="ph ph-plus"></i> Agregar Plato
+                </button>
+
+            </div>
+            <div id="mensaje" class="text-center mt-3 text-lg"></div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const imagenInput = document.getElementById('imagenUrl');
+    const preview = document.getElementById('preview');
+    const disponibleSwitch = document.getElementById('disponibleSwitch');
+    const disponibleUnidades = document.getElementById('disponibleUnidades');
+
+    // Muestra/oculta la previsualización de imagen
+    imagenInput.addEventListener('input', () => {
+        const url = imagenInput.value;
+        if (url && url.startsWith('http')) {
+            preview.src = url;
+            preview.classList.remove('hidden');
+        } else {
+            preview.src = '';
+            preview.classList.add('hidden');
+        }
+    });
+
+    // Habilita/deshabilita el input de unidades según el switch
+    disponibleSwitch.addEventListener('change', () => {
+        if (disponibleSwitch.checked) {
+            disponibleUnidades.disabled = false;
+            disponibleUnidades.classList.remove('bg-gray-100', 'opacity-60');
+        } else {
+            disponibleUnidades.disabled = true;
+            disponibleUnidades.classList.add('bg-gray-100', 'opacity-60');
+        }
+    });
+
+    document.getElementById('formAgregarPlato').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const precio = parseFloat(document.getElementById('precio').value);
+        const imagenUrl = document.getElementById('imagenUrl').value;
+        const disponible = disponibleSwitch.checked;
+        const disponibleUnidadesValue = disponible ? parseInt(disponibleUnidades.value) : 0;
+        const idProveedorRaw = document.getElementById('idProveedor').value;
+        const idProveedor = idProveedorRaw === "" ? null : parseInt(idProveedorRaw);
+
+        // Incluye el campo disponible
+        const platoDTO = { nombre, descripcion, precio, imagenUrl, disponible, disponibleUnidades: disponibleUnidadesValue, idProveedor };
+
+        const res = await fetch('http://localhost:8080/api/platos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(platoDTO)
+        });
+
+        const mensaje = document.getElementById('mensaje');
+        if (res.ok) {
+            mensaje.innerText = '¡Plato agregado correctamente!';
+            mensaje.className = 'text-green-600 font-bold mt-2';
+            document.getElementById('formAgregarPlato').reset();
+            preview.classList.add('hidden');
+            disponibleUnidades.disabled = false; // Reinicia
+            disponibleSwitch.checked = true;
+        } else {
+            mensaje.innerText = 'Error al agregar el plato';
+            mensaje.className = 'text-red-600 font-bold mt-2';
+        }
+    });
+</script>
+</body>
+</html>

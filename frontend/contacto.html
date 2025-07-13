@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto - El Comilón</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center gap-2">
+          <a href="Index.html" class="flex items-center space-x-2">
+            <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="h-10 w-auto">
+            <span class="text-2xl font-extrabold text-yellow-600">El Comilón</span>
+          </a>
+          <div class="hidden md:flex md:items-center md:ml-8 space-x-6">
+            <a href="catalogo.html" class="text-gray-700 hover:text-yellow-600">Platos</a>
+            <a href="restaurantes.html" class="text-gray-700 hover:text-yellow-600">Convenios</a>
+            <a href="pedido.html" class="text-gray-700 hover:text-yellow-600">Haz tu pedido</a>
+            <a href="delivery.html" class="text-gray-700 hover:text-yellow-600">Entrega a domicilio</a>
+            <a href="contacto.html" class="text-gray-700 hover:text-yellow-600">Contacto</a>
+            <!-- Botón admin, oculto por defecto -->
+            <a href="admin.html" id="adminBtn"
+              class="text-yellow-600 hover:text-yellow-800 font-bold border-2 border-yellow-400 rounded-xl px-4 py-1 ml-2 shadow transition hidden">
+              Administración
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Usuario logueado -->
+          <div id="usuarioNavbar" class="hidden items-center gap-2">
+            <span class="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full font-bold shadow gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5.121 17.804A10 10 0 1 1 18.88 17.804M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              </svg>
+              <span id="nombreUsuario">usuario@email.com</span>
+            </span>
+            <button onclick="cerrarSesion()" class="ml-3 bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-xl font-bold shadow text-sm">Cerrar sesión</button>
+          </div>
+          <!-- Botón de login -->
+          <button id="btnLogin" onclick="location.href='inicioSesion.html'"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
+            Inicia Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sección de contacto -->
+  <section class="py-16 px-4 max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-10">Contáctanos</h1>
+
+    <form class="bg-white p-8 rounded-xl shadow-lg space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+        <input type="text" placeholder="Tu nombre" class="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-yellow-500" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico</label>
+        <input type="email" placeholder="tu@email.com" class="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-yellow-500" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+        <textarea rows="4" placeholder="Cuéntanos en qué te podemos ayudar..." class="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-yellow-500" required></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-xl font-bold shadow-lg transition">Enviar Mensaje</button>
+      </div>
+    </form>
+
+    <div class="mt-10 text-center text-gray-600">
+      <p class="font-semibold mb-1">También puedes escribirnos a:</p>
+      <p>Email: <a href="mailto:contacto@elcomilon.cl" class="text-yellow-700 hover:underline">contacto@elcomilon.cl</a></p>
+      <p>Teléfono: <a href="tel:+56912345678" class="text-yellow-700 hover:underline">+56 9 1234 5678</a></p>
+      <div class="mt-6 flex justify-center space-x-4">
+        <a href="#" class="text-yellow-600 hover:underline font-semibold text-lg">Facebook</a>
+        <a href="#" class="text-yellow-600 hover:underline font-semibold text-lg">Instagram</a>
+        <a href="#" class="text-yellow-600 hover:underline font-semibold text-lg">Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-400 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      © 2025 El Comilón. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- Lógica navbar y sesión -->
+  <script>
+    function verificarSesion() {
+      let usuario = null;
+      try { usuario = JSON.parse(localStorage.getItem('elcomilonUser')); } catch{}
+      if (usuario && usuario.email) {
+        document.getElementById('btnLogin').classList.add('hidden');
+        document.getElementById('usuarioNavbar').classList.remove('hidden');
+        document.getElementById('nombreUsuario').innerText = usuario.email;
+        if (usuario.rol && usuario.rol.toLowerCase() === "admin") {
+          document.getElementById('adminBtn')?.classList.remove('hidden');
+        } else {
+          document.getElementById('adminBtn')?.classList.add('hidden');
+        }
+      } else {
+        document.getElementById('btnLogin').classList.remove('hidden');
+        document.getElementById('usuarioNavbar').classList.add('hidden');
+        document.getElementById('adminBtn')?.classList.add('hidden');
+      }
+    }
+    function cerrarSesion() {
+      localStorage.removeItem('elcomilonUser');
+      window.location.reload();
+    }
+    window.addEventListener('DOMContentLoaded', verificarSesion);
+  </script>
+</body>
+</html>

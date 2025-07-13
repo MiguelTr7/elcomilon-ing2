@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurantes Asociados - El Comilón</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-yellow-500 text-white p-6 text-center shadow-md">
+    <h1 class="text-4xl font-bold">Restaurantes Asociados</h1>
+    <p class="text-lg mt-2">Conoce los locales que trabajan junto a El Comilón</p>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center gap-2">
+          <a href="Index.html" class="flex-shrink-0 flex items-center space-x-2">
+            <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="h-10 w-auto">
+            <span class="text-2xl font-extrabold text-yellow-600">El Comilón</span>
+          </a>
+          <div class="hidden md:ml-8 md:flex md:space-x-6 md:items-center">
+            <a href="catalogo.html" class="text-gray-700 hover:text-yellow-600">Platos</a>
+            <a href="restaurantes.html" class="text-gray-700 hover:text-yellow-600">Convenios</a>
+            <a href="pedido.html" class="text-gray-700 hover:text-yellow-600">Haz tu pedido</a>
+            <a href="delivery.html" class="text-gray-700 hover:text-yellow-600">Entrega a domicilio</a>
+            <a href="contacto.html" class="text-gray-700 hover:text-yellow-600">Contacto</a>
+            <!-- Botón admin, oculto por defecto -->
+            <a href="admin.html" id="adminBtn"
+              class="text-yellow-600 hover:text-yellow-800 font-bold border-2 border-yellow-400 rounded-xl px-4 py-1 ml-2 shadow transition hidden">
+              Administración
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Usuario logueado -->
+          <div id="usuarioNavbar" class="hidden items-center gap-2">
+            <span class="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full font-bold shadow gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5.121 17.804A10 10 0 1 1 18.88 17.804M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              </svg>
+              <span id="nombreUsuario">usuario@email.com</span>
+            </span>
+            <button onclick="cerrarSesion()" class="ml-3 bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-xl font-bold shadow text-sm">Cerrar sesión</button>
+          </div>
+          <!-- Botón de login -->
+          <button id="btnLogin" onclick="location.href='inicioSesion.html'"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg transition text-base">
+            Inicia Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Grid de Restaurantes Intercalado -->
+  <section class="p-8 space-y-10 max-w-7xl mx-auto">
+    <!-- 1 -->
+    <div class="bg-white rounded-xl shadow-lg flex flex-col md:flex-row overflow-hidden">
+      <img src="https://offloadmedia.feverup.com/santiagosecreto.com/wp-content/uploads/2023/09/11123303/8-3.jpg" class="w-full md:w-1/3 object-cover">
+      <div class="p-6 flex flex-col justify-center">
+        <h2 class="text-2xl font-bold text-yellow-600">La Casa del Sabor</h2>
+        <p class="text-sm text-gray-500 mt-1">Ubicación: Santiago Centro</p>
+        <p class="mt-2">Comida criolla hecha con amor, tradición y productos frescos.</p>
+      </div>
+    </div>
+    <!-- 2 -->
+    <div class="bg-white rounded-xl shadow-lg flex flex-col md:flex-row-reverse overflow-hidden">
+      <img src="https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmVzdGF1cmFudGV8ZW58MHx8MHx8fDA%3D" class="w-full md:w-1/3 object-cover">
+      <div class="p-6 flex flex-col justify-center md:items-end text-right">
+        <h2 class="text-2xl font-bold text-yellow-600">Sabores del Sur</h2>
+        <p class="text-sm text-gray-500 mt-1">Ubicación: Santiago</p>
+        <p class="mt-2">Platos sureños con un toque gourmet, directo desde el sur de Chile.</p>
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="bg-white rounded-xl shadow-lg flex flex-col md:flex-row overflow-hidden">
+      <img src="https://feyma.com/blog/wp-content/uploads/2024/02/decoracion-restaurantes-acogedores.jpg" class="w-full md:w-1/3 object-cover">
+      <div class="p-6 flex flex-col justify-center">
+        <h2 class="text-2xl font-bold text-yellow-600">Delicias del Norte</h2>
+        <p class="text-sm text-gray-500 mt-1">Ubicación: Santiago</p>
+        <p class="mt-2">Sabores del mar y la cordillera en un solo lugar.</p>
+      </div>
+    </div>
+    <!-- 4 -->
+    <div class="bg-white rounded-xl shadow-lg flex flex-col md:flex-row-reverse overflow-hidden">
+      <img src="https://casablancavalley.cl/wp-content/uploads/2021/05/equilibrio-7.jpg" class="w-full md:w-1/3 object-cover">
+      <div class="p-6 flex flex-col justify-center md:items-end text-right">
+        <h2 class="text-2xl font-bold text-yellow-600">Fusión Criolla</h2>
+        <p class="text-sm text-gray-500 mt-1">Ubicación: Santiago</p>
+        <p class="mt-2">Comida chilena con un giro internacional moderno.</p>
+      </div>
+    </div>
+    <!-- 5 -->
+    <div class="bg-white rounded-xl shadow-lg flex flex-col md:flex-row overflow-hidden">
+      <img src="https://misterwils.com/wp-content/uploads/2024/09/misterwils-post-decoracion-restaurantes-2025-6.jpg" class="w-full md:w-1/3 object-cover">
+      <div class="p-6 flex flex-col justify-center">
+        <h2 class="text-2xl font-bold text-yellow-600">Sazón Mapuche</h2>
+        <p class="text-sm text-gray-500 mt-1">Ubicación: Rancagua</p>
+        <p class="mt-2">Sabores ancestrales con ingredientes nativos y recetas tradicionales.</p>
+      </div>
+    </div>
+    <!-- 6 -->
+    <div class="bg-white rounded-xl shadow-lg flex flex-col md:flex-row-reverse overflow-hidden">
+      <img src="https://www.visitfinland.com/dam/jcr:7c2c8221-ace3-4362-a5b0-8073ee6967e9/Savoy-Interior-7.jpeg" class="w-full md:w-1/3 object-cover">
+      <div class="p-6 flex flex-col justify-center md:items-end text-right">
+        <h2 class="text-2xl font-bold text-yellow-600">Rincón del Campo</h2>
+        <p class="text-sm text-gray-500 mt-1">Ubicación: Rancagua</p>
+        <p class="mt-2">Comida casera con ingredientes frescos de la zona central.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-yellow-500 text-white p-4 text-center mt-10">
+    <p>&copy; 2025 El Comilón. Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Login persistente y navbar dinámico -->
+  <script>
+    function verificarSesion() {
+      let usuario = null;
+      try { usuario = JSON.parse(localStorage.getItem('elcomilonUser')); } catch{}
+      if (usuario && usuario.email) {
+        document.getElementById('btnLogin').classList.add('hidden');
+        document.getElementById('usuarioNavbar').classList.remove('hidden');
+        document.getElementById('nombreUsuario').innerText = usuario.email;
+        // Muestra el botón de admin solo si rol es admin
+        if (usuario.rol && usuario.rol.toLowerCase() === "admin") {
+          document.getElementById('adminBtn')?.classList.remove('hidden');
+        } else {
+          document.getElementById('adminBtn')?.classList.add('hidden');
+        }
+      } else {
+        document.getElementById('btnLogin').classList.remove('hidden');
+        document.getElementById('usuarioNavbar').classList.add('hidden');
+        document.getElementById('adminBtn')?.classList.add('hidden');
+      }
+    }
+    function cerrarSesion() {
+      localStorage.removeItem('elcomilonUser');
+      window.location.reload();
+    }
+    window.addEventListener('DOMContentLoaded', verificarSesion);
+  </script>
+</body>
+</html>

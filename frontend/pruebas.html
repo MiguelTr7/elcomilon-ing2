@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de Platos Caseros - El Comilón</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/6980356c-632c-4914-a508-31ef9ce27319.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        .animate-bounce-slow {
+            animation: bounce 4s infinite alternate cubic-bezier(0.2, 0.6, 0.4, 1.4);
+        }
+        @keyframes bounce {
+            0%   { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 36px 0 rgba(31, 38, 135, 0.08);
+            backdrop-filter: blur(3px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: box-shadow .25s, transform .25s;
+        }
+        .glass-card:hover {
+            box-shadow: 0 16px 56px 0 rgba(31, 38, 135, 0.20), 0 2px 4px 0 rgba(0,0,0,0.10);
+            transform: scale(1.045) translateY(-4px);
+        }
+        .badge-float {
+            box-shadow: 0 3px 15px 0 rgba(234,180,8,0.20);
+            animation: floatBadge 2.2s infinite alternate;
+            display: flex;
+            align-items: center;
+            gap: 0.4em;
+        }
+        @keyframes floatBadge {
+            0% { transform: translateY(0);}
+            100% { transform: translateY(-4px);}
+        }
+        .badge-float .dot {
+            width: 0.9em;
+            height: 0.9em;
+            background: #fff8e1;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-right: 2px;
+            border: 2px solid #ffe066;
+        }
+        .cart-bounce {
+            animation: cartBounce 0.5s;
+        }
+        @keyframes cartBounce {
+            0% { transform: scale(1.05) rotate(-5deg); }
+            70% { transform: scale(1.25) rotate(8deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-white to-yellow-200 min-h-screen text-gray-800">
+<!-- Header animado -->
+<header class="bg-yellow-500 text-white p-8 text-center shadow-xl">
+    <div class="flex flex-col items-center gap-2">
+        <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="w-20 h-20 rounded-full border-4 border-yellow-200 shadow animate-bounce-slow mb-2">
+        <h1 class="text-4xl md:text-5xl font-extrabold drop-shadow">Catálogo de Platos Caseros</h1>
+        <p class="text-lg md:text-2xl mt-2 font-medium">Sabores auténticos, como en casa</p>
+    </div>
+</header>
+
+<!-- Navbar profesional con carrito -->
+<nav class="bg-white/90 shadow-lg sticky top-0 z-20 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center gap-2">
+                <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="h-10 w-10 rounded-full border-2 border-yellow-400">
+                <a href="Index.html" class="text-2xl font-extrabold text-yellow-600 tracking-tight hover:text-yellow-800 transition drop-shadow">El Comilón</a>
+            </div>
+            <div class="hidden md:flex md:ml-8 md:space-x-6 md:items-center">
+                <a href="catalogo.html" class="text-yellow-600 font-bold underline underline-offset-4">Platos</a>
+                <a href="restaurantes.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Convenios</a>
+                <a href="pedido.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Haz tu pedido</a>
+                <a href="delivery.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Entrega a domicilio</a>
+                <a href="contacto.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Contacto</a>
+            </div>
+            <!-- Icono de carrito -->
+            <div id="cartIcon" onclick="window.location.href='pedido.html'"
+                 class="relative cursor-pointer mr-4 hidden md:block">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor" class="w-8 h-8 text-yellow-600 hover:text-yellow-800 transition">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 0 0 7.5 19h9a2 2 0 0 0 1.85-1.3L19 13M7 13V6h10v7" />
+                </svg>
+                <span id="cartCount"
+                      class="absolute -top-2 -right-2 bg-yellow-400 text-white text-xs rounded-full px-2 py-0.5 shadow font-bold"
+                      style="display:none">0</span>
+            </div>
+            <div class="flex items-center">
+                <button onclick="location.href='inicioSesion.html'"
+                        class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-xl font-bold shadow-lg transition text-base">Inicia Sesión</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Catálogo de Platos (estático + dinámico) -->
+<main class="p-8 pt-12 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" id="catalogoList">
+        <!-- Platos estáticos -->
+        <div class="glass-card overflow-hidden flex flex-col group cursor-pointer">
+            <div class="relative">
+                <img src="https://easyways.cl/storage/20200909161345porotos%20con%20riendas.jpg" alt="Porotos con riendas" class="w-full h-56 object-cover group-hover:opacity-90 transition" />
+                <span class="absolute top-2 right-2 bg-yellow-400 text-white px-3 py-1 rounded-lg text-sm font-bold badge-float">
+          <span class="dot"></span>Disponible
+        </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+                <h3 class="text-2xl font-bold mb-1 text-yellow-700 group-hover:text-yellow-900 transition">Porotos con Riendas</h3>
+                <p class="mb-3 text-gray-700">Plato clásico chileno con tallarines, longaniza y porotos.</p>
+                <div class="mt-auto flex justify-between items-center">
+                    <span class="text-xl text-yellow-700 font-bold">$4.500</span>
+                    <button onclick="agregarAlCarritoEstatico('Porotos con Riendas','Plato clásico chileno con tallarines, longaniza y porotos.','https://easyways.cl/storage/20200909161345porotos%20con%20riendas.jpg',4500)" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold text-base shadow transition">Pedir</button>
+                </div>
+            </div>
+        </div>
+        <div class="glass-card overflow-hidden flex flex-col group cursor-pointer">
+            <div class="relative">
+                <img src="https://cloudfront-us-east-1.images.arcpublishing.com/copesa/F3K5PQNPDNB5JDDD6HJRK5ATN4.jpeg" alt="Cazuela de Vacuno" class="w-full h-56 object-cover group-hover:opacity-90 transition" />
+                <span class="absolute top-2 right-2 bg-yellow-400 text-white px-3 py-1 rounded-lg text-sm font-bold badge-float">
+          <span class="dot"></span>Disponible
+        </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+                <h3 class="text-2xl font-bold mb-1 text-yellow-700 group-hover:text-yellow-900 transition">Cazuela de Vacuno</h3>
+                <p class="mb-3 text-gray-700">Caldo casero con carne, zapallo, papa y verduras frescas.</p>
+                <div class="mt-auto flex justify-between items-center">
+                    <span class="text-xl text-yellow-700 font-bold">$5.200</span>
+                    <button onclick="agregarAlCarritoEstatico('Cazuela de Vacuno','Caldo casero con carne, zapallo, papa y verduras frescas.','https://cloudfront-us-east-1.images.arcpublishing.com/copesa/F3K5PQNPDNB5JDDD6HJRK5ATN4.jpeg',5200)" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold text-base shadow transition">Pedir</button>
+                </div>
+            </div>
+        </div>
+        <div class="glass-card overflow-hidden flex flex-col group cursor-pointer">
+            <div class="relative">
+                <img src="https://www.gourmet.cl/wp-content/uploads/2016/09/Empanadas-web-1.jpg" alt="Empanadas de Pino" class="w-full h-56 object-cover group-hover:opacity-90 transition" />
+                <span class="absolute top-2 right-2 bg-yellow-400 text-white px-3 py-1 rounded-lg text-sm font-bold badge-float">
+          <span class="dot"></span>Disponible
+        </span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+                <h3 class="text-2xl font-bold mb-1 text-yellow-700 group-hover:text-yellow-900 transition">Empanadas de Pino</h3>
+                <p class="mb-3 text-gray-700">Empanadas horneadas con carne, huevo y aceitunas.</p>
+                <div class="mt-auto flex justify-between items-center">
+                    <span class="text-xl text-yellow-700 font-bold">$1.500</span>
+                    <button onclick="agregarAlCarritoEstatico('Empanadas de Pino','Empanadas horneadas con carne, huevo y aceitunas.','https://www.gourmet.cl/wp-content/uploads/2016/09/Empanadas-web-1.jpg',1500)" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold text-base shadow transition">Pedir</button>
+                </div>
+            </div>
+        </div>
+        <!-- Puedes agregar más platos estáticos aquí -->
+    </div>
+    <!-- Platos dinámicos del backend debajo -->
+    <div id="catalogoListDynamic" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-8"></div>
+    <div id="catalogoMsg" class="text-center text-lg mt-8 text-gray-600"></div>
+</main>
+<!-- Carrito flotante -->
+<div id="carritoFlotante" class="fixed bottom-6 right-6 z-50">
+    <button id="abrirCarritoBtn" class="relative bg-yellow-500 hover:bg-yellow-600 text-white rounded-full shadow-xl w-16 h-16 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-yellow-300 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 0 0 7.5 19h9a2 2 0 0 0 1.85-1.3L19 13M7 13V6h10v7" />
+        </svg>
+        <span id="cartBubble" class="absolute -top-1.5 -right-1.5 bg-white text-yellow-500 text-xs font-bold rounded-full px-2 py-0.5 shadow border border-yellow-400 transition">0</span>
+    </button>
+    <!-- Panel carrito -->
+    <div id="panelCarrito" class="hidden mt-2 bg-white rounded-2xl shadow-2xl w-80 max-w-[90vw] p-5 animate__animated animate__fadeInUp glass-card">
+        <div class="flex justify-between items-center mb-3">
+            <span class="text-lg font-bold text-yellow-600">Tu Carrito</span>
+            <button id="cerrarCarritoBtn" class="text-gray-400 hover:text-yellow-600 text-2xl font-bold leading-none">&times;</button>
+        </div>
+        <div id="carritoContenido" class="max-h-56 overflow-y-auto mb-2"></div>
+        <div class="flex justify-between font-semibold text-lg mt-3">
+            <span>Total:</span>
+            <span id="carritoTotal">$0</span>
+        </div>
+        <button id="irAPedidoBtn" class="mt-5 w-full bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-3 font-bold text-lg shadow transition">Ir a Haz tu pedido</button>
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="text-center py-12 bg-white/80">
+    <h2 class="text-3xl font-bold mb-2 text-yellow-600">¿Listo para tu pedido?</h2>
+    <button onclick="window.location.href='pedido.html'" class="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-bold text-xl shadow-lg transition animate-pulse mt-2">Ir a Pedido</button>
+</section>
+
+<!-- Footer -->
+<footer class="bg-yellow-500 text-white p-4 text-center mt-10">
+    <p>&copy; 2025 El Comilón - Todos los derechos reservados</p>
+</footer>
+
+<script>
+    // --- Carrito para platos estáticos ---
+    function agregarAlCarritoEstatico(nombre, descripcion, imagenUrl, precio) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const existente = carrito.find(item => item.nombre === nombre);
+        if (existente) {
+            existente.cantidad += 1;
+        } else {
+            carrito.push({ nombre, descripcion, imagenUrl, precio, cantidad: 1 });
+        }
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        animarCarrito();
+        actualizarIconoCarrito();
+    }
+
+    // --- Carrito para platos dinámicos del backend ---
+    let platosCargados = [];
+
+    async function cargarCatalogo() {
+        const msgBox = document.getElementById('catalogoMsg');
+        msgBox.innerText = 'Cargando platos...';
+        try {
+            const res = await fetch('http://localhost:8080/api/platos');
+            if (!res.ok) throw new Error('No se pudo obtener el catálogo');
+            const platos = await res.json();
+            let html = '';
+            if (!platos.length) {
+                msgBox.innerText = 'No hay platos disponibles por ahora.';
+                return;
+            }
+            platos.forEach((p, i) => {
+                const imagen = p.imagenUrl && p.imagenUrl.startsWith('http')
+                    ? p.imagenUrl
+                    : `https://source.unsplash.com/480x320/?food,plato,${i+1}`;
+                html += `<div class='glass-card overflow-hidden flex flex-col group cursor-pointer'>`+
+                    `<div class='relative'>`+
+                    `<img src='${imagen}' alt='${p.nombre}' class='w-full h-56 object-cover group-hover:opacity-90 transition'/>`+
+                    `<span class='absolute top-2 right-2 bg-yellow-400 text-white px-3 py-1 rounded-lg text-sm font-bold badge-float'><span class='dot'></span>${p.disponible ? 'Disponible' : 'No disponible'}</span>`+
+                    `</div>`+
+                    `<div class='p-5 flex-1 flex flex-col'>`+
+                    `<h3 class='text-2xl font-bold mb-1 text-yellow-700 group-hover:text-yellow-900 transition'>${p.nombre}</h3>`+
+                    `<p class='mb-3 text-gray-700'>${p.descripcion || ''}</p>`+
+                    `<div class='mt-auto flex justify-between items-center'>`+
+                    `<span class='text-xl text-yellow-700 font-bold'>$${p.precio}</span>`+
+                    `<button onclick="agregarAlCarritoDinamico(${i})" class='bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold text-base shadow transition'>Pedir</button>`+
+                    `</div>`+
+                    `</div>`+
+                    `</div>`;
+            });
+            document.getElementById('catalogoListDynamic').innerHTML = html;
+            platosCargados = platos;
+            msgBox.innerText = '';
+        } catch(err) {
+            msgBox.innerText = 'Error al cargar catálogo: ' + err.message;
+        }
+    }
+    cargarCatalogo();
+
+    function agregarAlCarritoDinamico(idx) {
+        const plato = platosCargados[idx];
+        if (!plato) return;
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const existente = carrito.find(item => item.id === plato.id || item.nombre === plato.nombre);
+        if (existente) {
+            existente.cantidad += 1;
+        } else {
+            carrito.push({
+                id: plato.id || undefined,
+                nombre: plato.nombre,
+                descripcion: plato.descripcion,
+                imagenUrl: plato.imagenUrl,
+                precio: plato.precio,
+                cantidad: 1
+            });
+        }
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        animarCarrito();
+        actualizarIconoCarrito();
+    }
+
+    function actualizarIconoCarrito() {
+        // Calcula el total de items
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let cantidad = 0;
+        carrito.forEach(item => {
+            cantidad += item.cantidad;
+        });
+        document.getElementById('cartBubble').innerText = cantidad;
+    }
+    actualizarIconoCarrito();
+
+    document.getElementById('abrirCarritoBtn').onclick = function() {
+        renderizarCarrito();
+        document.getElementById('panelCarrito').classList.remove('hidden');
+    }
+    document.getElementById('cerrarCarritoBtn').onclick = function() {
+        document.getElementById('panelCarrito').classList.add('hidden');
+    }
+
+    document.getElementById('irAPedidoBtn').onclick = function() {
+        window.location.href = 'pedido.html';
+    }
+
+    function renderizarCarrito() {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const contenedor = document.getElementById('carritoContenido');
+        const totalSpan = document.getElementById('carritoTotal');
+        contenedor.innerHTML = '';
+        let total = 0;
+        if (carrito.length === 0) {
+            contenedor.innerHTML = '<div class="text-gray-400 text-center py-8">Tu carrito está vacío</div>';
+            totalSpan.innerText = '$0';
+            return;
+        }
+        carrito.forEach(item => {
+            total += item.precio * item.cantidad;
+            contenedor.innerHTML += `
+      <div class="flex items-center gap-3 mb-4">
+        <img src="${item.imagenUrl}" alt="${item.nombre}" class="w-12 h-12 object-cover rounded-lg border border-yellow-200">
+        <div class="flex-1">
+          <div class="font-semibold text-gray-700">${item.nombre}</div>
+          <div class="text-xs text-gray-500">${item.descripcion || ''}</div>
+        </div>
+        <div class="flex flex-col items-end">
+          <div class="text-yellow-700 font-bold">$${item.precio} x${item.cantidad}</div>
+          <button onclick="eliminarDelCarrito('${item.nombre}')" class="text-xs text-red-500 hover:underline">Quitar</button>
+        </div>
+      </div>
+    `;
+        });
+        totalSpan.innerText = `$${total}`;
+    }
+
+    function eliminarDelCarrito(nombre) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito = carrito.filter(item => item.nombre !== nombre);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        renderizarCarrito();
+        actualizarIconoCarrito();
+    }
+
+    window.addEventListener('storage', actualizarIconoCarrito);
+
+    function animarCarrito() {
+        const bubble = document.getElementById('cartBubble');
+        bubble.classList.add('cart-bounce');
+        setTimeout(() => bubble.classList.remove('cart-bounce'), 400);
+    }
+</script>
+</body>
+</html>

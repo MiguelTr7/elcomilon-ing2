@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Entrega a Domicilio - El Comilón</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center gap-2">
+          <a href="Index.html" class="flex items-center space-x-2">
+            <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="h-10 w-auto">
+            <span class="text-2xl font-extrabold text-yellow-600">El Comilón</span>
+          </a>
+          <div class="hidden md:flex md:items-center md:ml-8 space-x-6">
+            <a href="catalogo.html" class="text-gray-700 hover:text-yellow-600">Platos</a>
+            <a href="restaurantes.html" class="text-gray-700 hover:text-yellow-600">Convenios</a>
+            <a href="pedido.html" class="text-gray-700 hover:text-yellow-600">Haz tu pedido</a>
+            <a href="delivery.html" class="text-gray-700 hover:text-yellow-600">Entrega a domicilio</a>
+            <a href="contacto.html" class="text-gray-700 hover:text-yellow-600">Contacto</a>
+            <!-- Botón admin, oculto por defecto -->
+            <a href="admin.html" id="adminBtn"
+              class="text-yellow-600 hover:text-yellow-800 font-bold border-2 border-yellow-400 rounded-xl px-4 py-1 ml-2 shadow transition hidden">
+              Administración
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Usuario logueado -->
+          <div id="usuarioNavbar" class="hidden items-center gap-2">
+            <span class="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full font-bold shadow gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5.121 17.804A10 10 0 1 1 18.88 17.804M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              </svg>
+              <span id="nombreUsuario">usuario@email.com</span>
+            </span>
+            <button onclick="cerrarSesion()" class="ml-3 bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-xl font-bold shadow text-sm">Cerrar sesión</button>
+          </div>
+          <!-- Botón de login -->
+          <button id="btnLogin" onclick="location.href='inicioSesion.html'"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
+            Inicia Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Entrega a domicilio -->
+  <section class="py-16 px-4 max-w-5xl mx-auto">
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-10">Entrega a Domicilio</h1>
+
+    <div class="space-y-16 text-gray-700 leading-relaxed">
+
+      <!-- Funcionamiento -->
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <img src="https://thelogisticsworld.com/wp-content/uploads/2023/09/servicio-entrega-comida-ciclista-que-entrega-comida-clientes-bicicleta-conceptos-sobre-transporte-entrega-comida-tecnologia.jpg" alt="Repartidor" class="w-full md:max-w-md md:h-auto rounded-xl shadow-md">
+        <div>
+          <h2 class="text-2xl font-semibold text-yellow-600 mb-2">¿Cómo funciona nuestra entrega?</h2>
+          <p>
+            Una vez realizado tu pedido, nuestro equipo lo prepara con los más altos estándares. Luego, uno de nuestros repartidores lo recoge y lo entrega en tu domicilio en un plazo máximo de 60 minutos.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cobertura -->
+      <div class="flex flex-col md:flex-row-reverse items-center gap-6">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Comunas_de_Santiago_%28nombres%29.svg/1024px-Comunas_de_Santiago_%28nombres%29.svg.png" alt="Mapa cobertura" class="w-full md:max-w-md md:h-auto rounded-xl shadow-md">
+        <div>
+          <h2 class="text-2xl font-semibold text-yellow-600 mb-2">Zonas de cobertura</h2>
+          <ul class="list-disc list-inside">
+            <li>Santiago Centro</li>
+            <li>Ñuñoa</li>
+            <li>La Florida</li>
+            <li>Providencia</li>
+            <li>Maipú</li>
+            <li>Puente Alto (zona limitada)</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">* Consulta si tu comuna no está en la lista.</p>
+        </div>
+      </div>
+
+      <!-- Costos -->
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <img src="https://i0.wp.com/ayuda.marketplace.paris.cl/wp-content/uploads/2023/03/cat-img.png?fit=501%2C501&ssl=1" alt="Costo envío" class="w-full md:w-1/4 rounded-xl shadow-md">
+        <div>
+          <h2 class="text-2xl font-semibold text-yellow-600 mb-2">Costos de despacho</h2>
+          <ul class="list-disc list-inside mt-2">
+            <li><strong>$1.500</strong> zonas cercanas (menos de 5 km)</li>
+            <li><strong>$2.500</strong> zonas intermedias (5 a 10 km)</li>
+            <li><strong>$3.500</strong> zonas lejanas (más de 10 km)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Seguimiento -->
+      <div class="flex flex-col md:flex-row-reverse items-center gap-6">
+        <img src="https://img.freepik.com/vector-premium/ilustracion-vector-concepto-plano-aplicacion-entrega-pizza-seguimiento-pedidos-comida-rapida-servicio-mensajeria-profesional-aislo-personajes-dibujos-animados-2d-blanco-diseno-web-idea-creativa-envio_151150-8128.jpg" alt="Seguimiento pedido" class="w-full md:w-1/4 rounded-xl shadow-md">
+        <div>
+          <h2 class="text-2xl font-semibold text-yellow-600 mb-2">Seguimiento del pedido</h2>
+          <p>
+            Recibirás un correo con el número de seguimiento al confirmar tu pedido. También podrás ver el estado desde tu cuenta en nuestra plataforma.
+          </p>
+        </div>
+      </div>
+
+      <!-- Devoluciones -->
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <img src="https://edit.org/img/blog/qen-carteles-politica-devoluciones-editar-online.jpg" alt="Política devolución" class="w-full md:w-1/4 rounded-xl shadow-md">
+        <div>
+          <h2 class="text-2xl font-semibold text-yellow-600 mb-2">Política de devoluciones</h2>
+          <p>
+            Si tu pedido llega en mal estado o con errores, contáctanos en los primeros 15 minutos. Haremos la reposición o devolución sin costo adicional.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-400 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      © 2025 El Comilón. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- Lógica navbar y sesión -->
+  <script>
+    function verificarSesion() {
+      let usuario = null;
+      try { usuario = JSON.parse(localStorage.getItem('elcomilonUser')); } catch{}
+      if (usuario && usuario.email) {
+        document.getElementById('btnLogin').classList.add('hidden');
+        document.getElementById('usuarioNavbar').classList.remove('hidden');
+        document.getElementById('nombreUsuario').innerText = usuario.email;
+        if (usuario.rol && usuario.rol.toLowerCase() === "admin") {
+          document.getElementById('adminBtn')?.classList.remove('hidden');
+        } else {
+          document.getElementById('adminBtn')?.classList.add('hidden');
+        }
+      } else {
+        document.getElementById('btnLogin').classList.remove('hidden');
+        document.getElementById('usuarioNavbar').classList.add('hidden');
+        document.getElementById('adminBtn')?.classList.add('hidden');
+      }
+    }
+    function cerrarSesion() {
+      localStorage.removeItem('elcomilonUser');
+      window.location.reload();
+    }
+    window.addEventListener('DOMContentLoaded', verificarSesion);
+  </script>
+</body>
+</html>

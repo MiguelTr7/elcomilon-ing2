@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedido - El Comilón</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center gap-2">
+          <a href="Index.html" class="flex-shrink-0 flex items-center space-x-2">
+            <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="h-10 w-auto">
+            <span class="text-2xl font-extrabold text-yellow-600">El Comilón</span>
+          </a>
+          <div class="hidden md:ml-8 md:flex md:space-x-6 md:items-center">
+            <a href="catalogo.html" class="text-gray-700 hover:text-yellow-600">Platos</a>
+            <a href="restaurantes.html" class="text-gray-700 hover:text-yellow-600">Convenios</a>
+            <a href="pedido.html" class="text-gray-700 hover:text-yellow-600">Haz tu pedido</a>
+            <a href="delivery.html" class="text-gray-700 hover:text-yellow-600">Entrega a domicilio</a>
+            <a href="contacto.html" class="text-gray-700 hover:text-yellow-600">Contacto</a>
+            <a href="admin.html" id="adminBtn"
+              class="text-yellow-600 hover:text-yellow-800 font-bold border-2 border-yellow-400 rounded-xl px-4 py-1 ml-2 shadow transition hidden">
+              Administración
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Usuario logueado -->
+          <div id="usuarioNavbar" class="hidden items-center gap-2">
+            <span class="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full font-bold shadow gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5.121 17.804A10 10 0 1 1 18.88 17.804M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              </svg>
+              <span id="nombreUsuario">usuario@email.com</span>
+            </span>
+            <button onclick="cerrarSesion()" class="ml-3 bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-xl font-bold shadow text-sm">Cerrar sesión</button>
+          </div>
+          <!-- Botón de login -->
+          <button id="btnLogin" onclick="location.href='inicioSesion.html'"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg transition text-base">
+            Inicia Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carrito del usuario -->
+  <section class="py-8">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-yellow-700 mb-4">Tu carrito</h2>
+      <div id="carritoUsuario"></div>
+      <div class="my-4 text-right">
+        <button onclick="vaciarCarrito()" class="text-red-500 hover:underline font-bold text-sm">Vaciar carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de pedido -->
+  <section class="py-8">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-gray-800 text-center mb-10">Realizar Pedido</h1>
+      <form id="formPedido" class="bg-white p-6 rounded-lg shadow-lg space-y-6">
+        <!-- Datos del cliente -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Cliente</label>
+          <input type="text" id="nombreCliente" placeholder="Tu nombre" class="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-yellow-500" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Dirección de Entrega</label>
+          <input type="text" id="direccionEntrega" placeholder="Dirección completa" class="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-yellow-500" required>
+        </div>
+        <!-- Método de pago -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Método de Pago</label>
+          <select id="metodoPago" class="w-full border px-4 py-2 rounded-md focus:ring-2 focus:ring-yellow-500">
+            <option>Transferencia</option>
+            <option>Tarjeta de débito</option>
+            <option>Tarjeta de crédito</option>
+            <option>Pago contra entrega</option>
+          </select>
+        </div>
+        <!-- Botón de enviar -->
+        <div class="text-center pt-4">
+          <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold">Confirmar Pedido</button>
+        </div>
+      </form>
+      <div id="pedidoMensaje" class="text-center mt-6 text-lg font-bold"></div>
+    </div>
+  </section>
+
+  <!-- Historial de pedidos del usuario -->
+  <section class="py-8">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-yellow-700 mb-4">Tus Pedidos Realizados</h2>
+      <div id="pedidosUsuario" class="space-y-4"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-400 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      © 2025 El Comilón. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- Lógica navbar y sesión -->
+  <script>
+    function verificarSesion() {
+      let usuario = null;
+      try { usuario = JSON.parse(localStorage.getItem('elcomilonUser')); } catch{}
+      if (usuario && usuario.email) {
+        document.getElementById('btnLogin').classList.add('hidden');
+        document.getElementById('usuarioNavbar').classList.remove('hidden');
+        document.getElementById('nombreUsuario').innerText = usuario.email;
+        if (usuario.rol && usuario.rol.toLowerCase() === "admin") {
+          document.getElementById('adminBtn')?.classList.remove('hidden');
+        } else {
+          document.getElementById('adminBtn')?.classList.add('hidden');
+        }
+      } else {
+        document.getElementById('btnLogin').classList.remove('hidden');
+        document.getElementById('usuarioNavbar').classList.add('hidden');
+        document.getElementById('adminBtn')?.classList.add('hidden');
+      }
+    }
+    function cerrarSesion() {
+      localStorage.removeItem('elcomilonUser');
+      window.location.reload();
+    }
+    window.addEventListener('DOMContentLoaded', verificarSesion);
+  </script>
+
+  <!-- Carrito visual, vaciar/quitar, y pedido bonito -->
+  <script>
+    function obtenerUsuario() {
+      try { return JSON.parse(localStorage.getItem('elcomilonUser')) || null; } catch { return null; }
+    }
+
+    function renderizarCarrito() {
+      const usuario = obtenerUsuario();
+      const cont = document.getElementById('carritoUsuario');
+      if (!usuario) {
+        cont.innerHTML = '<div class="text-gray-500">Debes iniciar sesión para usar el carrito.</div>';
+        return;
+      }
+      let carrito = JSON.parse(localStorage.getItem('carrito_' + usuario.email)) || [];
+      if (!carrito.length) {
+        cont.innerHTML = '<div class="text-gray-400 text-center py-6">Tu carrito está vacío.</div>';
+        return;
+      }
+      let total = 0;
+      cont.innerHTML = carrito.map(item => {
+        total += item.precio * item.cantidad;
+        return `
+          <div class="bg-white/80 rounded-xl shadow p-4 mb-3 flex items-center gap-3">
+            <img src="${item.imagenUrl || 'https://source.unsplash.com/60x60/?food'}" class="w-14 h-14 rounded-xl object-cover border border-yellow-200" alt="${item.nombre}">
+            <div class="flex-1">
+              <div class="font-semibold text-yellow-700 text-lg">${item.nombre}</div>
+              <div class="text-sm text-gray-500">${item.descripcion || ''}</div>
+            </div>
+            <div class="flex flex-col items-end">
+              <span class="font-bold text-yellow-600">$${item.precio} x${item.cantidad}</span>
+              <button onclick="quitarDelCarrito('${item.nombre}')" class="text-xs text-red-500 hover:underline mt-1">Quitar</button>
+            </div>
+          </div>`;
+      }).join('') +
+        `<div class="text-right text-xl font-bold mt-4 text-yellow-800">Total: $${total}</div>`;
+    }
+
+    function quitarDelCarrito(nombre) {
+      const usuario = obtenerUsuario();
+      let carrito = JSON.parse(localStorage.getItem('carrito_' + usuario.email)) || [];
+      carrito = carrito.filter(item => item.nombre !== nombre);
+      localStorage.setItem('carrito_' + usuario.email, JSON.stringify(carrito));
+      renderizarCarrito();
+    }
+
+    function vaciarCarrito() {
+      const usuario = obtenerUsuario();
+      localStorage.removeItem('carrito_' + usuario.email);
+      renderizarCarrito();
+    }
+
+    // Confirmar pedido y guardar en historial bonito
+    document.addEventListener('DOMContentLoaded', function() {
+      renderizarCarrito();
+      mostrarPedidosUsuario();
+      document.getElementById('formPedido').addEventListener('submit', function(e){
+        e.preventDefault();
+        const usuario = obtenerUsuario();
+        if (!usuario) { alert('Debes iniciar sesión'); return; }
+        let carrito = JSON.parse(localStorage.getItem('carrito_' + usuario.email)) || [];
+        if (!carrito.length) { alert('El carrito está vacío.'); return; }
+        const total = carrito.reduce((a, b) => a + (b.precio * b.cantidad), 0);
+
+        // Info del formulario
+        const nombreCliente = document.getElementById('nombreCliente').value.trim();
+        const direccionEntrega = document.getElementById('direccionEntrega').value.trim();
+        const metodoPago = document.getElementById('metodoPago').value;
+
+        if (!nombreCliente || !direccionEntrega) {
+          alert('Completa los datos de cliente y dirección.');
+          return;
+        }
+
+        let pedidos = JSON.parse(localStorage.getItem('pedidos_' + usuario.email)) || [];
+        pedidos.push({
+          fecha: new Date().toLocaleString(),
+          items: carrito,
+          total: total,
+          nombre: nombreCliente,
+          direccion: direccionEntrega,
+          pago: metodoPago
+        });
+        localStorage.setItem('pedidos_' + usuario.email, JSON.stringify(pedidos));
+        localStorage.removeItem('carrito_' + usuario.email);
+
+        renderizarCarrito();
+        mostrarPedidosUsuario();
+        document.getElementById('formPedido').reset();
+        document.getElementById('pedidoMensaje').innerHTML = '<span class="text-green-600">¡Pedido realizado con éxito!</span>';
+        setTimeout(()=>{ document.getElementById('pedidoMensaje').innerHTML = ''; }, 3000);
+      });
+    });
+
+    function mostrarPedidosUsuario() {
+      const usuario = obtenerUsuario();
+      const cont = document.getElementById('pedidosUsuario');
+      if (!usuario) {
+        cont.innerHTML = '';
+        return;
+      }
+      let pedidos = JSON.parse(localStorage.getItem('pedidos_' + usuario.email)) || [];
+      if (!pedidos.length) {
+        cont.innerHTML = '<div class="text-gray-400 text-center py-4">No tienes pedidos previos.</div>';
+        return;
+      }
+      cont.innerHTML = pedidos.reverse().map(ped =>
+        `<div class="bg-white/90 rounded-xl shadow-lg p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <div>
+            <div class="text-sm text-gray-500 mb-1">Fecha: <span class="font-bold text-gray-700">${ped.fecha}</span></div>
+            <div class="text-sm text-gray-500 mb-1">Cliente: <span class="font-bold text-gray-700">${ped.nombre || ''}</span></div>
+            <div class="text-sm text-gray-500 mb-1">Dirección: <span class="font-bold text-gray-700">${ped.direccion || ''}</span></div>
+            <div class="text-sm text-gray-500 mb-1">Pago: <span class="font-bold text-gray-700">${ped.pago || ''}</span></div>
+            <div class="text-base text-gray-800 font-semibold mt-2">Platos:</div>
+            <ul class="list-disc list-inside text-gray-700 mb-2">
+              ${ped.items.map(it=>`<li>${it.nombre} <span class="text-xs text-gray-500">x${it.cantidad}</span></li>`).join('')}
+            </ul>
+          </div>
+          <div class="text-right">
+            <span class="text-xl font-bold text-yellow-700">Total: $${ped.total}</span>
+          </div>
+        </div>`
+      ).join('');
+    }
+  </script>
+</body>
+</html>

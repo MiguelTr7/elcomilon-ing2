@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de Platos Caseros - El Comilón</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="img/6980356c-632c-4914-a508-31ef9ce27319.png" type="image/png">
+  <style>
+    .animate-bounce-slow {
+      animation: bounce 4s infinite alternate cubic-bezier(0.2, 0.6, 0.4, 1.4);
+    }
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 36px 0 rgba(31, 38, 135, 0.08);
+      backdrop-filter: blur(3px);
+      border-radius: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .glass-card:hover {
+      box-shadow: 0 16px 56px 0 rgba(31, 38, 135, 0.20), 0 2px 4px 0 rgba(0,0,0,0.10);
+      transform: scale(1.045) translateY(-4px);
+    }
+    .badge-float {
+      box-shadow: 0 3px 15px 0 rgba(234,180,8,0.20);
+      animation: floatBadge 2.2s infinite alternate;
+    }
+    @keyframes floatBadge {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(-4px);}
+    }
+    .cart-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 50;
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 36px 0 rgba(31,38,135,0.13);
+      border: 2px solid #fde047;
+      padding: 0.5rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      transition: box-shadow .2s, transform .2s;
+      min-width: 76px;
+      min-height: 58px;
+    }
+    .cart-float:hover {
+      box-shadow: 0 12px 48px 0 rgba(252,211,77,0.18);
+      transform: scale(1.05);
+    }
+    @media (max-width: 700px) {
+      .cart-float { right: 10px; bottom: 10px;}
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-white to-yellow-200 min-h-screen text-gray-800">
+<header class="bg-yellow-500 text-white p-8 text-center shadow-xl">
+  <div class="flex flex-col items-center gap-2">
+    <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="w-20 h-20 rounded-full border-4 border-yellow-200 shadow animate-bounce-slow mb-2">
+    <h1 class="text-4xl md:text-5xl font-extrabold drop-shadow">Catálogo de Platos Caseros</h1>
+    <p class="text-lg md:text-2xl mt-2 font-medium">Sabores auténticos, como en casa</p>
+  </div>
+</header>
+
+<!-- Navbar profesional -->
+<nav class="bg-white/90 shadow-lg sticky top-0 z-20 backdrop-blur">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between h-16 items-center">
+      <div class="flex items-center gap-2">
+        <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="h-10 w-10 rounded-full border-2 border-yellow-400">
+        <a href="Index.html" class="text-2xl font-extrabold text-yellow-600 tracking-tight hover:text-yellow-800 transition drop-shadow">El Comilón</a>
+      </div>
+      <div class="hidden md:flex md:ml-8 md:space-x-6 md:items-center">
+        <a href="catalogo.html" class="text-yellow-600 font-bold underline underline-offset-4">Platos</a>
+        <a href="restaurantes.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Convenios</a>
+        <a href="pedido.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Haz tu pedido</a>
+        <a href="delivery.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Entrega a domicilio</a>
+        <a href="contacto.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Contacto</a>
+        <!-- Botón admin, oculto por defecto -->
+        <a href="admin.html" id="adminBtn"
+          class="text-yellow-600 hover:text-yellow-800 font-bold border-2 border-yellow-400 rounded-xl px-4 py-1 ml-2 shadow transition hidden">
+          Administración
+        </a>
+      </div>
+      <div class="flex items-center gap-4">
+        <!-- Usuario logueado -->
+        <div id="usuarioNavbar" class="hidden items-center gap-2">
+          <span class="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full font-bold shadow gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5.121 17.804A10 10 0 1 1 18.88 17.804M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            </svg>
+            <span id="nombreUsuario">usuario@email.com</span>
+          </span>
+          <button onclick="cerrarSesion()" class="ml-3 bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-xl font-bold shadow text-sm">Cerrar sesión</button>
+        </div>
+        <!-- Botón de login -->
+        <button id="btnLogin" onclick="location.href='inicioSesion.html'"
+          class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-xl font-bold shadow-lg transition text-base">
+          Inicia Sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Catálogo de Platos (estático + dinámico) -->
+<main class="p-8 pt-12 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10" id="catalogoList">
+    <!-- Platos estáticos de ejemplo -->
+    <!-- Puedes agregar platos aquí si lo deseas -->
+  </div>
+  <div id="catalogoListDynamic" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-8"></div>
+  <div id="catalogoMsg" class="text-center text-lg mt-8 text-gray-600"></div>
+</main>
+
+<!-- Carrito flotante tipo KFC -->
+<div class="cart-float shadow-xl cursor-pointer" onclick="window.location.href='pedido.html'">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 0 0 7.5 19h9a2 2 0 0 0 1.85-1.3L19 13M7 13V6h10v7" />
+  </svg>
+  <div>
+    <div class="text-xs font-bold text-gray-700">Productos: <span id="cartCantidad">0</span></div>
+    <div class="text-xs font-bold text-yellow-700">Total: $<span id="cartTotal">0</span></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-yellow-500 text-white p-4 text-center mt-10">
+  <p>&copy; 2025 El Comilón - Todos los derechos reservados</p>
+</footer>
+
+<!-- Lógica de login persistente y navbar dinámico -->
+<script>
+  function verificarSesion() {
+    let usuario = null;
+    try { usuario = JSON.parse(localStorage.getItem('elcomilonUser')); } catch{}
+    if (usuario && usuario.email) {
+      document.getElementById('btnLogin').classList.add('hidden');
+      document.getElementById('usuarioNavbar').classList.remove('hidden');
+      document.getElementById('nombreUsuario').innerText = usuario.email;
+      if (usuario.rol && usuario.rol.toLowerCase() === "admin") {
+        document.getElementById('adminBtn')?.classList.remove('hidden');
+      } else {
+        document.getElementById('adminBtn')?.classList.add('hidden');
+      }
+    } else {
+      document.getElementById('btnLogin').classList.remove('hidden');
+      document.getElementById('usuarioNavbar').classList.add('hidden');
+      document.getElementById('adminBtn')?.classList.add('hidden');
+    }
+  }
+  function cerrarSesion() {
+    localStorage.removeItem('elcomilonUser');
+    window.location.reload();
+  }
+  window.addEventListener('DOMContentLoaded', verificarSesion);
+</script>
+
+<script>
+  // Mini carrito sincronizado
+  function actualizarMiniCarrito() {
+    let usuario = null;
+    try { usuario = JSON.parse(localStorage.getItem('elcomilonUser')); } catch{}
+    let cantidad = 0, total = 0;
+    if (usuario && usuario.email) {
+      let carrito = JSON.parse(localStorage.getItem('carrito_' + usuario.email)) || [];
+      carrito.forEach(item => {
+        cantidad += item.cantidad;
+        total += item.precio * item.cantidad;
+      });
+    }
+    document.getElementById('cartCantidad').innerText = cantidad;
+    document.getElementById('cartTotal').innerText = total;
+  }
+  window.addEventListener('DOMContentLoaded', actualizarMiniCarrito);
+
+  // Guardar al carrito desde "Pedir"
+  function agregarAlCarritoCatalogo(plato) {
+    let usuario = null;
+    try { usuario = JSON.parse(localStorage.getItem('elcomilonUser')); } catch{}
+    if (!usuario || !usuario.email) {
+      alert('Debes iniciar sesión para agregar al carrito');
+      return;
+    }
+    let carrito = JSON.parse(localStorage.getItem('carrito_' + usuario.email)) || [];
+    let idx = carrito.findIndex(i => i.nombre === plato.nombre);
+    if (idx >= 0) {
+      carrito[idx].cantidad += 1;
+    } else {
+      carrito.push({ ...plato, cantidad: 1 });
+    }
+    localStorage.setItem('carrito_' + usuario.email, JSON.stringify(carrito));
+    actualizarMiniCarrito();
+  }
+
+  // Catálogo dinámico (AJUSTA aquí tus campos si es necesario)
+  async function cargarCatalogo() {
+    const msgBox = document.getElementById('catalogoMsg');
+    msgBox.innerText = 'Cargando platos...';
+    try {
+      const res = await fetch('http://localhost:8080/api/platos');
+      if (!res.ok) throw new Error('No se pudo obtener el catálogo');
+      const platos = await res.json();
+      let html = '';
+      if (!platos.length) {
+        msgBox.innerText = 'No hay platos disponibles por ahora.';
+        return;
+      }
+      platos.forEach((p, i) => {
+        const imagen = p.imagenUrl && p.imagenUrl.startsWith('http')
+                ? p.imagenUrl
+                : `https://source.unsplash.com/480x320/?food,plato,${i+1}`;
+        html += `<div class='glass-card overflow-hidden flex flex-col group cursor-pointer'>`+
+                `<div class='relative'>`+
+                `<img src='${imagen}' alt='${p.nombre}' class='w-full h-56 object-cover group-hover:opacity-90 transition'/>`+
+                `<span class='absolute top-2 right-2 bg-yellow-400 text-white px-3 py-1 rounded-lg text-sm font-bold badge-float'>${p.disponible ? 'Disponible' : 'No disponible'}</span>`+
+                `</div>`+
+                `<div class='p-5 flex-1 flex flex-col'>`+
+                `<h3 class='text-2xl font-bold mb-1 text-yellow-700 group-hover:text-yellow-900 transition'>${p.nombre}</h3>`+
+                `<p class='mb-3 text-gray-700'>${p.descripcion || ''}</p>`+
+                `<div class='mt-auto flex justify-between items-center'>`+
+                `<span class='text-xl text-yellow-700 font-bold'>$${p.precio}</span>`+
+                `<button onclick='agregarAlCarritoCatalogo(${JSON.stringify({
+                    nombre: p.nombre,
+                    descripcion: p.descripcion,
+                    imagenUrl: p.imagenUrl,
+                    precio: p.precio
+                }).replace(/'/g, "&apos;")})' class='bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold text-base shadow transition'>Pedir</button>`+
+                `</div>`+
+                `</div>`+
+                `</div>`;
+      });
+      document.getElementById('catalogoListDynamic').innerHTML = html;
+      msgBox.innerText = '';
+    } catch(err) {
+      msgBox.innerText = 'Error al cargar catálogo: ' + err.message;
+    }
+  }
+  cargarCatalogo();
+</script>
+</body>
+</html>

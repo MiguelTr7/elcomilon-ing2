@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Comilón - Plataforma Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="img/6980356c-632c-4914-a508-31ef9ce27319.png" type="image/png">
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-white to-yellow-200 min-h-screen">
+  <!-- Navbar -->
+  <nav class="bg-white/90 shadow-xl sticky top-0 z-20 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center gap-2">
+          <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo El Comilón" class="h-12 w-12 rounded-full border-4 border-yellow-500 shadow transition-transform hover:scale-110 duration-200 cursor-pointer">
+          <a href="Index.html" class="text-3xl font-extrabold text-yellow-600 tracking-tight drop-shadow">El Comilón</a>
+        </div>
+        <div class="hidden md:flex md:ml-8 md:space-x-6 md:items-center">
+          <a href="catalogo.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Platos</a>
+          <a href="restaurantes.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Convenios</a>
+          <a href="pedido.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Haz tu pedido</a>
+          <a href="delivery.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Entrega a domicilio</a>
+          <a href="contacto.html" class="text-gray-700 hover:text-yellow-600 font-semibold transition">Contacto</a>
+          <!-- Botón admin, oculto por defecto -->
+          <a href="admin.html" id="adminBtn"
+            class="text-yellow-600 hover:text-yellow-800 font-bold border-2 border-yellow-400 rounded-xl px-4 py-1 ml-2 shadow transition hidden">
+            Administración
+          </a>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Usuario logueado -->
+          <div id="usuarioNavbar" class="hidden items-center gap-2">
+            <span class="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full font-bold shadow gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5.121 17.804A10 10 0 1 1 18.88 17.804M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              </svg>
+              <span id="nombreUsuario">usuario@email.com</span>
+            </span>
+            <button onclick="cerrarSesion()" class="ml-3 bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-xl font-bold shadow text-sm">Cerrar sesión</button>
+          </div>
+          <!-- Botón de login -->
+          <button id="btnLogin" onclick="location.href='inicioSesion.html'"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-xl font-bold shadow-lg transition text-lg">
+            Inicia Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative bg-[url('https://wallpapers.com/images/hd/food-4k-1pf6px6ryqfjtnyr.jpg')] bg-center bg-cover h-[75vh] flex flex-col justify-center">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center justify-center h-full px-6">
+      <img src="img/6980356c-632c-4914-a508-31ef9ce27319.png" alt="Logo Hero" class="w-32 h-32 mx-auto mb-4 rounded-full shadow-xl border-4 border-yellow-500 animate-bounce-slow bg-white/60">
+      <h1 class="text-6xl font-extrabold mb-4 text-yellow-400 drop-shadow-lg">El Comilón</h1>
+      <p class="text-2xl text-white mb-7 drop-shadow">La mejor comida casera directo a tu mesa</p>
+      <button onclick="document.getElementById('platosDestacados').scrollIntoView({behavior:'smooth'})" class="bg-yellow-500 hover:bg-yellow-600 px-10 py-4 rounded-xl text-2xl font-bold shadow-lg transition mb-2 animate-pulse">
+        Haz tu pedido acá
+      </button>
+      <a href="catalogo.html" class="text-white underline text-lg mt-1 hover:text-yellow-300 transition">Ver el menú completo</a>
+    </div>
+  </section>
+
+  <!-- Platos Destacados (dinámico) -->
+  <section id="platosDestacados" class="py-16 bg-white/90 relative">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-gray-800 mb-10 text-center tracking-tight">Nuestros Platos Destacados</h2>
+      <div id="platosDestacadosList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <div id="platosMsg" class="text-center mt-4 text-gray-600"></div>
+    </div>
+  </section>
+
+  <!-- Restaurantes en Convenio -->
+  <section id="convenios" class="py-16 bg-yellow-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Restaurantes en Convenio</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:scale-105 hover:shadow-2xl transition text-yellow-700 font-semibold text-xl">Rosticería La Abuela</div>
+        <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:scale-105 hover:shadow-2xl transition text-yellow-700 font-semibold text-xl">Taquería El Toro</div>
+        <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:scale-105 hover:shadow-2xl transition text-yellow-700 font-semibold text-xl">Veggie Delight</div>
+        <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:scale-105 hover:shadow-2xl transition text-yellow-700 font-semibold text-xl">Sushi Express</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pedido CTA -->
+  <section id="pedido" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Haz tu Pedido</h2>
+      <p class="text-gray-700 mb-7 text-lg">Selecciona tus platos favoritos y recibe en la puerta de tu casa.</p>
+      <button onclick="window.location.href='pedido.html'" class="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-xl font-bold text-xl shadow-lg transition animate-pulse">Ver menú completo</button>
+    </div>
+  </section>
+
+  <!-- Entrega a Domicilio -->
+  <section id="domicilio" class="py-16 bg-gradient-to-r from-yellow-50 via-white to-yellow-100">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+      <img src="https://images.pexels.com/photos/2806245/pexels-photo-2806245.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Repartidor" class="w-full md:w-1/2 rounded-3xl shadow-lg border-4 border-yellow-300 animate-bounce">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Entrega a Domicilio</h2>
+        <p class="text-gray-600 mb-4">Llega rápido y seguro a tu hogar u oficina. Rastreá tu pedido en tiempo real.</p>
+        <button onclick="window.location.href='delivery.html'" class="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg transition">Solicitar Delivery</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-16 bg-white/80">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Contáctanos</h2>
+      <p class="text-gray-600 mb-4">¿Tienes dudas o necesitas ayuda? Escríbenos o llámanos.</p>
+      <p class="font-semibold">Email: contacto@elcomilon.cl | Tel: +56 9 1234 5678</p>
+      <div class="mt-6 flex justify-center space-x-4">
+        <a href="#" class="text-yellow-600 hover:underline font-semibold text-lg">Facebook</a>
+        <a href="#" class="text-yellow-600 hover:underline font-semibold text-lg">Instagram</a>
+        <a href="#" class="text-yellow-600 hover:underline font-semibold text-lg">Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 py-6">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      © 2025 El Comilón. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <!-- Animaciones personalizadas -->
+  <style>
+    .animate-bounce-slow {
+      animation: bounce 3.6s infinite alternate cubic-bezier(0.2, 0.6, 0.4, 1.4);
+    }
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-28px); }
+    }
+  </style>
+
+  <!-- Lógica de login persistente y navbar dinámico -->
+  <script>
+    function verificarSesion() {
+      let usuario = null;
+      try { usuario = JSON.parse(localStorage.getItem('elcomilonUser')); } catch{}
+      if (usuario && usuario.email) {
+        document.getElementById('btnLogin').classList.add('hidden');
+        document.getElementById('usuarioNavbar').classList.remove('hidden');
+        document.getElementById('nombreUsuario').innerText = usuario.email;
+        // Muestra el botón de admin solo si rol es admin
+        if (usuario.rol && usuario.rol.toLowerCase() === "admin") {
+          document.getElementById('adminBtn')?.classList.remove('hidden');
+        } else {
+          document.getElementById('adminBtn')?.classList.add('hidden');
+        }
+      } else {
+        document.getElementById('btnLogin').classList.remove('hidden');
+        document.getElementById('usuarioNavbar').classList.add('hidden');
+        document.getElementById('adminBtn')?.classList.add('hidden');
+      }
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem('elcomilonUser');
+      window.location.reload();
+    }
+
+    window.addEventListener('DOMContentLoaded', verificarSesion);
+  </script>
+
+  <script>
+    async function cargarPlatosDestacados() {
+      const msgBox = document.getElementById('platosMsg');
+      msgBox.innerText = 'Cargando destacados...';
+      try {
+        const res = await fetch('http://localhost:8080/api/platos');
+        if (!res.ok) throw new Error('No se pudo obtener los platos');
+        const platos = await res.json();
+        let html = '';
+        if (!platos.length) {
+          msgBox.innerText = 'No hay platos destacados todavía.';
+          return;
+        }
+        platos.slice(0, 3).forEach((p,i) => {
+          const imagen = p.imagenUrl && p.imagenUrl.startsWith('http')
+                  ? p.imagenUrl
+                  : `https://source.unsplash.com/480x320/?food,plato,${i+1}`;
+          html += `<div class='bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col hover:scale-105 transition cursor-pointer group'>` +
+                  `<div class='relative'>` +
+                  `<img src='${imagen}' alt='${p.nombre}' class='w-full h-52 object-cover group-hover:opacity-90 transition'/>` +
+                  `<span class='absolute top-2 right-2 bg-yellow-400 text-white px-3 py-1 rounded-lg text-sm font-bold shadow group-hover:bg-yellow-600'>${p.disponible ? 'Disponible' : 'No disponible'}</span>` +
+                  `</div>` +
+                  `<div class='p-5 flex-1 flex flex-col'>` +
+                  `<h3 class='text-2xl font-bold mb-2 text-yellow-700 group-hover:text-yellow-900 transition'>${p.nombre}</h3>` +
+                  `<p class='mb-3 text-gray-700'>${p.descripcion || ''}</p>` +
+                  `<div class='mt-auto flex justify-between items-center'>` +
+                  `<span class='text-2xl text-yellow-700 font-bold'>$${p.precio}</span>` +
+                  `<button onclick="window.location.href='pedido.html'" class='bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold text-base shadow transition'>Pedir</button>` +
+                  `</div>` +
+                  `</div>` +
+                  `</div>`;
+        });
+        document.getElementById('platosDestacadosList').innerHTML = html;
+        msgBox.innerText = '';
+      } catch(err) {
+        msgBox.innerText = 'No se pudo cargar platos: ' + err.message;
+      }
+    }
+    cargarPlatosDestacados();
+  </script>
+
+</body>
+</html>
